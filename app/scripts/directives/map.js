@@ -103,6 +103,12 @@ ngMap.directive('map', ['Attr2Options', '$parse', 'NavigatorGeolocation', 'GeoCo
         /**
          * Initialize shapes for this map
          */
+        this.addShape = function(shape) {
+          shape.setMap(this.map);
+          var len = Object.keys($scope.shapes).length;
+          $scope.shapes[shape.id || len] = shape;
+        };
+
         this.initializeShapes = function() {
           $scope.shapes = {};
           for (var i=0; i<this.shapes.length; i++) {

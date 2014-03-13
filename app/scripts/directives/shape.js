@@ -54,7 +54,11 @@ ngMap.directive('shape', ['Attr2Options', function(Attr2Options) {
             console.log('shape', shapeName, 'options', shapeOptions);
             var shape = getShape(shapeName, shapeOptions);
             if (shape) {
-                mapController.shapes.push(shape);
+                if (shapeOptions.ngRepeat) { 
+                  mapController.addShape(shape);
+                } else {
+                  mapController.markers.push(shape);
+                }
             } else {
                 console.error("shape", shapeName, "is not defined");
             }
