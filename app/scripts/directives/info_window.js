@@ -48,8 +48,9 @@ ngMap.directive('infoWindow', [ 'Attr2Options',
               }
             }
           }
+          var anchor = new google.maps.Marker({position: event.latLng})
           infoWindow.setContent(contents);
-          infoWindow.open(scope.map, this);
+          infoWindow.open(scope.map, anchor);
         }
       } //link
     } // return
